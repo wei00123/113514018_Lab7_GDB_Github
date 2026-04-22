@@ -18,7 +18,7 @@ public:
 
     child(int a, string b) { value = a; id = b; dad = nullptr; } // 故意讓 dad 為 null
     void printinfo() { 
-        cout << dad->value << " "; 
+        cout << dad->value << " ";
         cout << dad->id << endl;
     }
 };
@@ -28,6 +28,7 @@ void stage1() {
     child* y = new child(60, "root");
     child* x = new child(50, "child");
     
+    x->dad = y;
     x->printinfo(); 
     
     cout << "[Stage 1] 通過！指標問題已修復。" << endl;
@@ -54,7 +55,7 @@ public:
 
 void stage2() {
     cout << "\n[Stage 2] 測試 person 類別..." << endl;
-    char* bad_ptr = nullptr;
+    char bad_ptr[] = "NYCU";
     person p(bad_ptr, 20); 
     
     cout << "[Stage 2] 通過！字串記憶體處理正確。" << endl;
@@ -69,7 +70,7 @@ void stage2() {
 int summation(int array[]) {
     int result = 0;
 
-    for (unsigned int i = size; i >= 0; --i) {
+    for (int i = size; i >= 0; --i) {
         result += array[i];
     }
     return result;
